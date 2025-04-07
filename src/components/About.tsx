@@ -1,28 +1,29 @@
 
-import { Code, Layout, Zap } from "lucide-react";
+import { Palette, Code, Search } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 const About = () => {
   const skills = [
-    "HTML/CSS", "JavaScript", "TypeScript", "React", 
-    "Node.js", "Tailwind CSS", "Next.js", "GraphQL"
+    "UI Design", "UX Research", "Wireframing", "Prototyping", 
+    "HTML/CSS", "JavaScript", "React", "Figma", 
+    "SEO Basics", "Keyword Research", "Content Optimization"
   ];
 
   const services = [
     {
-      icon: <Code className="h-8 w-8 text-portfolio-primary" />,
-      title: "Web Development",
-      description: "I create responsive, performant websites that provide a great user experience and meet business needs."
-    },
-    {
-      icon: <Layout className="h-8 w-8 text-portfolio-secondary" />,
+      icon: <Palette className="h-8 w-8 text-portfolio-primary" />,
       title: "UI/UX Design",
       description: "I design intuitive and aesthetically pleasing interfaces that keep users engaged and make navigation easy."
     },
     {
-      icon: <Zap className="h-8 w-8 text-portfolio-accent" />,
-      title: "Performance Optimization",
-      description: "I optimize websites for peak performance, ensuring fast load times and smooth user interactions."
+      icon: <Code className="h-8 w-8 text-portfolio-secondary" />,
+      title: "Web Development",
+      description: "I build responsive, performant websites using modern frameworks and best practices for clean, maintainable code."
+    },
+    {
+      icon: <Search className="h-8 w-8 text-portfolio-accent" />,
+      title: "SEO Optimization",
+      description: "I optimize websites to rank higher in search results, improving visibility and driving more organic traffic."
     }
   ];
 
@@ -44,18 +45,18 @@ const About = () => {
           </div>
           <div className="w-full md:w-1/2">
             <h3 className="text-2xl font-bold mb-4">
-              I'm a passionate Full-Stack Developer based in New York
+              I'm a passionate UI/UX Designer and Junior Developer based in New York
             </h3>
             <p className="text-gray-600 mb-6">
-              With over 5 years of experience in web development, I've worked on a variety of 
-              projects ranging from simple landing pages to complex web applications. My goal is 
-              to build products that are not only functional but also provide an exceptional 
+              With 2 years of experience in design and development, I've worked on various 
+              digital products from concept to completion. I focus on creating user-centered 
+              designs that are not only visually appealing but also provide an exceptional 
               user experience.
             </p>
             <p className="text-gray-600 mb-8">
-              I love working with the latest technologies and am always eager to learn new 
-              skills. When I'm not coding, I enjoy hiking, reading, and experimenting with 
-              new recipes in the kitchen.
+              I'm continuously learning and expanding my skillset in both design and development. 
+              Recently, I've been exploring search engine optimization to ensure the products I 
+              create are not only beautiful and functional but also discoverable.
             </p>
             <div className="mb-8">
               <h4 className="text-xl font-semibold mb-4">My Skills</h4>

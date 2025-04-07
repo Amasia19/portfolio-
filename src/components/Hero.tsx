@@ -16,12 +16,12 @@ const Hero = () => {
               <span className="text-portfolio-primary">John Doe</span>
             </h1>
             <h2 className="text-2xl md:text-3xl text-gray-700 mb-6">
-              <span className="font-semibold">Web Developer</span> & Designer
+              <span className="font-semibold">UI/UX Designer</span> & Junior Developer
             </h2>
             <p className="text-lg text-gray-600 mb-8 max-w-xl">
-              I craft responsive websites where technology meets creativity.
-              When I'm not coding or pushing pixels, you'll find me exploring
-              new technologies or mastering my coffee brewing skills.
+              I create intuitive and engaging user experiences where design meets functionality.
+              When I'm not designing interfaces or coding, you'll find me exploring
+              design trends or optimizing websites for search engines.
             </p>
             <div className="flex flex-wrap gap-4">
               <Button 
