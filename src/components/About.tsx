@@ -45,13 +45,10 @@ const About = () => {
           </div>
           <div className="w-full md:w-1/2">
             <h3 className="text-2xl font-bold mb-4">
-              I'm a passionate UI/UX Designer and Junior Developer based in New York
+              I'm a passionate UI/UX Designer and Junior Developer based in Madagascar
             </h3>
             <p className="text-gray-600 mb-6">
-              With 2 years of experience in design and development, I've worked on various 
-              digital products from concept to completion. I focus on creating user-centered 
-              designs that are not only visually appealing but also provide an exceptional 
-              user experience.
+            With 1 year of experience in design and development, including working at a digital agency, I've contributed to various digital products from concept to completion. I focus on creating user-centered designs that are not only visually appealing but also provide an exceptional user experience.
             </p>
             <p className="text-gray-600 mb-8">
               I'm continuously learning and expanding my skillset in both design and development. 

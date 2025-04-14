@@ -6,22 +6,23 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center pt-16 bg-gradient-to-br from-white to-gray-50"
+      className="min-h-screen flex items-center pt-16 bg-gradient-to-br from-blue-100 to-blue-300"
+
     >
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="w-full md:w-1/2 animate-fade-up">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
               Hi, I'm{" "}
-              <span className="text-portfolio-primary">John Doe</span>
+              <span className="text-portfolio-primary">Amasia Rajaobelina</span>
             </h1>
             <h2 className="text-2xl md:text-3xl text-gray-700 mb-6">
-              <span className="font-semibold">UI/UX Designer</span> & Junior Developer
+              <span className="font-semibold">UI/UX Designer</span> & Junior Developer  & Junior SEO
             </h2>
             <p className="text-lg text-gray-600 mb-8 max-w-xl">
-              I create intuitive and engaging user experiences where design meets functionality.
-              When I'm not designing interfaces or coding, you'll find me exploring
-              design trends or optimizing websites for search engines.
+            I create intuitive and engaging user experiences where design meets functionality. When I'm not designing interfaces or coding, you'll find me exploring design trends, optimizing websites for search engines, or improving the natural SEO of your site.
+
+
             </p>
             <div className="flex flex-wrap gap-4">
               <Button 
