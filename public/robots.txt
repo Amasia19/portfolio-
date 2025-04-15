@@ -12,3 +12,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://portfolio-ifl6w3dfh-amasias-projects-847e6a22.vercel.app//sitemap.xml
