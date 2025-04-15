@@ -37,7 +37,7 @@ const NavBar = () => {
         : "bg-transparent py-5"
     }`}
     >
-      <div className="container mx-auto flex justify-between items-center">
+      <div className="container mx-auto flex justify-between items-start">
         <a href="#home" className="text-2xl font-bold text-portfolio-primary">
           Portfolio
         </a>
