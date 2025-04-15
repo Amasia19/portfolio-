@@ -9,7 +9,7 @@ const Projects = () => {
       title: "E-Commerce Platform",
       description: "A full-featured e-commerce platform with cart, checkout, and payment integration.",
       image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-      technologies: ["React", "Node.js", "MongoDB", "Stripe"],
+      technologies: ["React", "Node.js",],
       liveUrl: "#",
       githubUrl: "#",
     },
