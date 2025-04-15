@@ -72,10 +72,10 @@ const Footer = () => {
         </div>
         
         <div className="border-t border-gray-800 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400">
-            &copy; {currentYear} Your Portfolio. All rights reserved.
-          </p>
-          <p className="flex items-center text-gray-400 mt-4 md:mt-0">
+        <p className="text-gray-400 text-base sm:text-sm md:text-base lg:text-lg text-[12px]">
+  © {currentYear} Your Portfolio. All rights reserved.
+</p>
+          <p className="flex items-center text-gray-400 text-base sm:text-sm md:text-base lg:text-lg text-[14px]">
             Made with React
           </p>
         </div>

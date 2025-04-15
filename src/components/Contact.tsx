@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
+import '../Contact.css'
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -95,7 +96,9 @@ const Contact = () => {
                     <div className="bg-gray-100 p-3 rounded-full">{info.icon}</div>
                     <div>
                       <h4 className="font-medium">{info.title}</h4>
-                      <p className="text-gray-600">{info.content}</p>
+                      <p className="break-all text-sm text-gray-600">
+                      {info.content}
+</p>
                     </div>
                   </a>
                 ))}
