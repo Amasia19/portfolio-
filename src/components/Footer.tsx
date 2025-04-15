@@ -75,7 +75,7 @@ const Footer = () => {
         <p className="text-gray-400 text-base sm:text-sm md:text-base lg:text-lg text-[12px]">
   © {currentYear} Your Portfolio. All rights reserved.
 </p>
-          <p className="flex items-center text-gray-400 text-base sm:text-sm md:text-base lg:text-lg text-[14px]">
+          <p className="flex items-center text-gray-400 text-base sm:text-sm md:text-base lg:text-lg text-[12px]">
             Made with React
           </p>
         </div>
