@@ -31,11 +31,11 @@ const NavBar = () => {
 
   return (
     <header
-      className={`fixed top-0 left-5 right-5 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-white/90 backdrop-blur-md py-3 shadow-sm"
-          : "bg-transparent py-5"
-      }`}
+    className={`fixed top-0 flex justify-between w-full z-50 transition-all duration-300 pl-[15px] pr-[15px] ${
+      isScrolled
+        ? "bg-white/90 backdrop-blur-md py-3 shadow-sm"
+        : "bg-transparent py-5"
+    }`}
     >
       <div className="container mx-auto flex justify-between items-center">
         <a href="#home" className="text-2xl font-bold text-portfolio-primary">
