@@ -6,9 +6,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center pt-16 bg-gradient-to-br from-blue-100 to-blue-300"
-
-    >
+      className="min-h-screen flex items-center pt-16 bg-gradient-to-br from-blue-100 to-blue-300">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="w-full md:w-1/2 animate-fade-up">
@@ -28,16 +26,19 @@ const Hero = () => {
               <Button 
                 className="bg-portfolio-primary hover:bg-portfolio-primary/90 text-white px-6"
                 size="lg"
-              >
-                View My Work
+              ><a href="#projects"> View My Work</a>
+               
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
               <Button 
                 variant="outline" 
                 size="lg"
                 className="border-portfolio-primary text-portfolio-primary hover:bg-portfolio-primary/10"
+                
               >
-                Contact Me
+                <a href="#contact">Contact Me</a>
+
+              
               </Button>
             </div>
           </div>

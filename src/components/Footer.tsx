@@ -76,7 +76,7 @@ const Footer = () => {
             &copy; {currentYear} Your Portfolio. All rights reserved.
           </p>
           <p className="flex items-center text-gray-400 mt-4 md:mt-0">
-            Made with <Heart className="h-4 w-4 text-red-500 mx-1" /> and React
+            Made with React
           </p>
         </div>
       </div>
