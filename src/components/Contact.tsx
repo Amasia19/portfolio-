@@ -50,20 +50,20 @@ const Contact = () => {
     {
       icon: <Mail className="h-5 w-5 text-portfolio-primary" />,
       title: "Email",
-      content: "john.doe@example.com",
-      href: "mailto:john.doe@example.com",
+      content: "amasiarajaobelina.jw@gmail.com",
+      href: "mailto:amasiarajaobelina.jw@gmail.com",
     },
     {
       icon: <Phone className="h-5 w-5 text-portfolio-primary" />,
       title: "Phone",
-      content: "+1 (555) 123-4567",
-      href: "tel:+15551234567",
+      content: "+261 038 70 615 33",
+      href: "+261 038 70 615 33",
     },
     {
       icon: <MapPin className="h-5 w-5 text-portfolio-primary" />,
       title: "Location",
-      content: "New York, NY, USA",
-      href: "https://maps.google.com/?q=New+York",
+      content: "Madagascar",
+      href: "https://www.google.com/maps/place/Madagascar",
     },
   ];
 
@@ -138,7 +138,7 @@ const Contact = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="John Doe"
+                    placeholder="Your Name"
                     required
                     className="w-full"
                   />
