@@ -13,6 +13,7 @@ const Contact = () => {
     subject: "",
     message: "",
   });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
@@ -44,19 +45,17 @@ const Contact = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          service_id: "service_qwws6ht", // ID du service EmailJS
-          template_id: "template_qn9dhka", // ID du template EmailJS
-          user_id: "RXixNGZc7LHKjYBkS",  // Ta clé publique EmailJS
+          service_id: "service_qwws6ht",
+          template_id: "template_qn9dhka",
+          user_id: "RXixNGZc7LHKjYBkS",
           template_params: templateParams,
         }),
       });
 
-      const data = await response.json();
-
-      if (data.status === 200) {
+      if (response.ok) {
         toast({
-          title: "Message envoyé !",
-          description: "Merci pour votre message. Je vous répondrai bientôt.",
+          title: "Message envoyé ✅",
+          description: "Merci pour votre message. Je vous répondrai bientôt !",
         });
         setFormData({
           name: "",
@@ -65,15 +64,16 @@ const Contact = () => {
           message: "",
         });
       } else {
+        const errorData = await response.json();
         toast({
-          title: "Erreur !",
-          description: data.error || "Une erreur s'est produite. Essayez à nouveau.",
+          title: "Erreur ❌",
+          description: errorData.error || "Une erreur s'est produite.",
           variant: "destructive",
         });
       }
     } catch (error) {
       toast({
-        title: "Erreur !",
+        title: "Erreur réseau 😕",
         description: "Impossible de se connecter au serveur.",
         variant: "destructive",
       });
@@ -110,8 +110,7 @@ const Contact = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
           <div className="h-1 w-20 bg-portfolio-primary mx-auto"></div>
           <p className="mt-6 text-gray-600 max-w-2xl mx-auto">
-            Have a project in mind or just want to say hello? Feel free to
-            reach out! I'll get back to you as soon as possible.
+            Have a project in mind or just want to say hello? Feel free to reach out! I'll get back to you as soon as possible.
           </p>
         </div>
 
@@ -144,18 +143,10 @@ const Contact = () => {
           </div>
 
           <div className="lg:col-span-2">
-            <form
-              onSubmit={handleSubmit}
-              className="bg-white p-8 rounded-lg shadow-md"
-            >
+            <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Your Name
-                  </label>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
                   <Input
                     id="name"
                     name="name"
@@ -167,12 +158,7 @@ const Contact = () => {
                   />
                 </div>
                 <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Your Email
-                  </label>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Your Email</label>
                   <Input
                     id="email"
                     name="email"
@@ -187,12 +173,7 @@ const Contact = () => {
               </div>
 
               <div className="mb-6">
-                <label
-                  htmlFor="subject"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Subject
-                </label>
+                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">Subject</label>
                 <Input
                   id="subject"
                   name="subject"
@@ -205,12 +186,7 @@ const Contact = () => {
               </div>
 
               <div className="mb-6">
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Message
-                </label>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
                 <Textarea
                   id="message"
                   name="message"
@@ -229,25 +205,9 @@ const Contact = () => {
               >
                 {isSubmitting ? (
                   <span className="flex items-center gap-2">
-                    <svg
-                      className="animate-spin h-4 w-4 text-white"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <circle
-                        className="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        strokeWidth="4"
-                      ></circle>
-                      <path
-                        className="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                      ></path>
+                    <svg className="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                     </svg>
                     Sending...
                   </span>
