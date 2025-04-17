@@ -1,11 +1,10 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
-import '../Contact.css'
+import "../Contact.css";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -27,24 +26,60 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulating form submission
-    setTimeout(() => {
+
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+    };
+
+    try {
+      const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          service_id: "service_qwws6ht", // ID du service EmailJS
+          template_id: "template_qn9dhka", // ID du template EmailJS
+          user_id: "RXixNGZc7LHKjYBkS",  // Ta clé publique EmailJS
+          template_params: templateParams,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.status === 200) {
+        toast({
+          title: "Message envoyé !",
+          description: "Merci pour votre message. Je vous répondrai bientôt.",
+        });
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        toast({
+          title: "Erreur !",
+          description: data.error || "Une erreur s'est produite. Essayez à nouveau.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
       toast({
-        title: "Message sent!",
-        description: "Thank you for your message. I'll get back to you soon.",
+        title: "Erreur !",
+        description: "Impossible de se connecter au serveur.",
+        variant: "destructive",
       });
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-      });
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
   const contactInfo = [
@@ -58,7 +93,7 @@ const Contact = () => {
       icon: <Phone className="h-5 w-5 text-portfolio-primary" />,
       title: "Phone",
       content: "+261 038 70 615 33",
-      href: "+261 038 70 615 33",
+      href: "tel:+2610387061533",
     },
     {
       icon: <MapPin className="h-5 w-5 text-portfolio-primary" />,
@@ -75,8 +110,8 @@ const Contact = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
           <div className="h-1 w-20 bg-portfolio-primary mx-auto"></div>
           <p className="mt-6 text-gray-600 max-w-2xl mx-auto">
-            Have a project in mind or just want to say hello? Feel free to reach out!
-            I'll get back to you as soon as possible.
+            Have a project in mind or just want to say hello? Feel free to
+            reach out! I'll get back to you as soon as possible.
           </p>
         </div>
 
@@ -90,50 +125,35 @@ const Contact = () => {
                     key={index}
                     href={info.href}
                     className="flex items-start gap-4 hover:text-portfolio-primary transition-colors"
-                    target={info.title === "Location" ? "_blank" : undefined}
-                    rel={info.title === "Location" ? "noopener noreferrer" : undefined}
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    <div className="bg-gray-100 p-3 rounded-full">{info.icon}</div>
+                    <div className="bg-gray-100 p-3 rounded-full">
+                      {info.icon}
+                    </div>
                     <div>
                       <h4 className="font-medium">{info.title}</h4>
                       <p className="break-all text-sm text-gray-600">
-                      {info.content}
-</p>
+                        {info.content}
+                      </p>
                     </div>
                   </a>
                 ))}
               </div>
-              
-              <div className="mt-8">
-                <h4 className="font-medium mb-4">Follow me</h4>
-                <div className="flex gap-4">
-                  {["github", "twitter", "linkedin", "instagram"].map((social) => (
-                    <a
-                      key={social}
-                      href={`https://${social}.com`}
-                      className="bg-gray-100 p-3 rounded-full hover:bg-portfolio-primary hover:text-white transition-colors"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <span className="sr-only">{social}</span>
-                      <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 22c-5.514 0-10-4.486-10-10s4.486-10 10-10 10 4.486 10 10-4.486 10-10 10z" />
-                      </svg>
-                    </a>
-                  ))}
-                </div>
-              </div>
             </div>
           </div>
-          
+
           <div className="lg:col-span-2">
-            <form 
-              onSubmit={handleSubmit} 
+            <form
+              onSubmit={handleSubmit}
               className="bg-white p-8 rounded-lg shadow-md"
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
                     Your Name
                   </label>
                   <Input
@@ -147,7 +167,10 @@ const Contact = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
                     Your Email
                   </label>
                   <Input
@@ -162,9 +185,12 @@ const Contact = () => {
                   />
                 </div>
               </div>
-              
+
               <div className="mb-6">
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
+                <label
+                  htmlFor="subject"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
                   Subject
                 </label>
                 <Input
@@ -177,9 +203,12 @@ const Contact = () => {
                   className="w-full"
                 />
               </div>
-              
+
               <div className="mb-6">
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
                   Message
                 </label>
                 <Textarea
@@ -192,7 +221,7 @@ const Contact = () => {
                   className="w-full min-h-[150px]"
                 />
               </div>
-              
+
               <Button
                 type="submit"
                 className="w-full bg-portfolio-primary hover:bg-portfolio-primary/90"
@@ -200,9 +229,25 @@ const Contact = () => {
               >
                 {isSubmitting ? (
                   <span className="flex items-center gap-2">
-                    <svg className="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    <svg
+                      className="animate-spin h-4 w-4 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
                     </svg>
                     Sending...
                   </span>
